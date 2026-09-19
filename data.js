@@ -6,21 +6,21 @@ const PASLON = [
         nomor: 1,
         ketua: "Nama Ketua 1",
         wakil: "Nama Wakil 1",
-        foto: "image/paslon1.png"
+        foto: "paslon1.png"
     },
     {
         id: 2,
         nomor: 2,
         ketua: "Nama Ketua 2",
         wakil: "Nama Wakil 2",
-        foto: "image/paslon2.png"
+        foto: "paslon2.png"
     },
     {
         id: 3,
         nomor: 3,
         ketua: "Nama Ketua 3",
         wakil: "Nama Wakil 3",
-        foto: "image/paslon3.png"
+        foto: "paslon3.png"
     }
 ];
 
