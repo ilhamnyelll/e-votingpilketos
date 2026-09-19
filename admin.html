@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - E-Voting OSIS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+
+    <!-- LOGIN ADMIN -->
+
+    <section id="adminLogin"
+             class="min-h-screen flex items-center justify-center px-5">
+
+        <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+
+            <div class="text-center mb-7">
+
+                <div class="text-5xl mb-4">
+                    🔐
+                </div>
+
+                <h1 class="text-2xl font-extrabold">
+                    Admin Dashboard
+                </h1>
+
+                <p class="text-slate-500 text-sm mt-2">
+                    Masukkan password administrator
+                </p>
+
+            </div>
+
+
+            <form id="adminLoginForm">
+
+                <label class="block font-semibold mb-2">
+                    Password Admin
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    class="input-field mb-4"
+                    placeholder="Masukkan password"
+                    required
+                >
+
+                <div id="adminError"
+                     class="hidden bg-red-50 border border-red-200 text-red-700 p-3 rounded-lg text-sm mb-4">
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold">
+
+                    Masuk Dashboard
+
+                </button>
+
+            </form>
+
+
+            <div class="text-center mt-5">
+
+                <a href="index.html"
+                   class="text-blue-600 hover:underline text-sm">
+
+                    ← Kembali
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- DASHBOARD -->
+
+    <section id="adminDashboard"
+             class="hidden">
+
+        <!-- NAVBAR -->
+
+        <nav class="bg-slate-900 text-white">
+
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+                <div>
+
+                    <h1 class="font-bold text-xl">
+                        📊 Dashboard E-Voting
+                    </h1>
+
+                    <p class="text-slate-400 text-xs">
+                        Rekapitulasi Pemilihan OSIS
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="logoutAdmin"
+                    class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg text-sm font-semibold">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <main class="max-w-7xl mx-auto px-6 py-8">
+
+
+            <!-- STATISTIK -->
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+
+                <div class="stat-card">
+
+                    <p>Total Pemilih</p>
+
+                    <h2 id="totalPemilih">
+                        0
+                    </h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>Sudah Memilih</p>
+
+                    <h2 id="sudahMemilih">
+                        0
+                    </h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>Belum Memilih</p>
+
+                    <h2 id="belumMemilih">
+                        0
+                    </h2>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <p>Total Suara</p>
+
+                    <h2 id="totalSuara">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- CHART -->
+
+            <div class="bg-white rounded-2xl shadow p-6 mb-8">
+
+                <div class="flex justify-between items-center mb-5">
+
+                    <div>
+
+                        <h2 class="text-xl font-bold">
+                            Grafik Perolehan Suara
+                        </h2>
+
+                        <p class="text-sm text-slate-500">
+                            Data diperbarui otomatis
+                        </p>
+
+                    </div>
+
+                    <span class="live-indicator">
+                        ● LIVE
+                    </span>
+
+                </div>
+
+                <div class="relative h-80">
+
+                    <canvas id="voteChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAFTAR PEMILIH -->
+
+            <div class="bg-white rounded-2xl shadow overflow-hidden">
+
+                <div class="p-6 border-b">
+
+                    <h2 class="text-xl font-bold">
+                        Daftar Siswa
+                    </h2>
+
+                    <p class="text-sm text-slate-500 mt-1">
+                        Status pemilihan setiap siswa
+                    </p>
+
+                </div>
+
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full">
+
+                        <thead class="bg-slate-50">
+
+                            <tr>
+
+                                <th class="table-head">
+                                    No
+                                </th>
+
+                                <th class="table-head text-left">
+                                    Nama
+                                </th>
+
+                                <th class="table-head text-left">
+                                    Kelas
+                                </th>
+
+                                <th class="table-head">
+                                    Status
+                                </th>
+
+                                <th class="table-head">
+                                    Pilihan
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="studentTable">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESET DATA -->
+
+            <div class="mt-8 bg-red-50 border border-red-200 rounded-xl p-5">
+
+                <h3 class="font-bold text-red-700">
+                    ⚠️ Zona Berbahaya
+                </h3>
+
+                <p class="text-sm text-red-600 mt-1 mb-4">
+                    Gunakan hanya untuk menghapus seluruh data voting demo.
+                </p>
+
+                <button
+                    id="resetData"
+                    class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg font-semibold">
+
+                    Reset Seluruh Data Voting
+
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+
+</body>
+</html>

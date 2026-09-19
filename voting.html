@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bilik Suara - E-Voting OSIS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+    <!-- HEADER -->
+
+    <header class="bg-blue-700 text-white shadow-lg">
+
+        <div class="max-w-6xl mx-auto px-6 py-5">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <h1 class="text-xl font-bold">
+                        🗳️ Bilik Suara
+                    </h1>
+
+                    <p class="text-blue-100 text-sm">
+                        Pemilihan Ketua & Wakil Ketua OSIS
+                    </p>
+
+                </div>
+
+                <div id="pemilihInfo"
+                     class="text-right text-sm">
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+
+    <main class="max-w-6xl mx-auto px-6 py-10">
+
+        <div class="text-center mb-10">
+
+            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold">
+                BILIK SUARA
+            </span>
+
+            <h2 class="text-3xl md:text-4xl font-extrabold mt-4">
+                Pilih Pasangan Calon
+            </h2>
+
+            <p class="text-slate-500 mt-2">
+                Anda hanya dapat memilih satu pasangan calon.
+            </p>
+
+        </div>
+
+
+        <!-- PASLON -->
+
+        <div id="paslonContainer"
+             class="grid md:grid-cols-3 gap-6">
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <div class="text-center mt-10">
+
+            <button
+                id="submitVote"
+                disabled
+                class="bg-slate-400 text-white px-10 py-4 rounded-xl font-bold cursor-not-allowed transition">
+
+                ✓ Konfirmasi Pilihan
+
+            </button>
+
+            <p id="selectedText"
+               class="text-sm text-slate-500 mt-3">
+                Belum ada pilihan
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- MODAL KONFIRMASI -->
+
+    <div id="confirmModal"
+         class="hidden fixed inset-0 bg-black/50 flex items-center justify-center px-5 z-50">
+
+        <div class="bg-white rounded-2xl max-w-md w-full p-7 shadow-2xl">
+
+            <div class="text-center">
+
+                <div class="text-5xl mb-4">
+                    ⚠️
+                </div>
+
+                <h3 class="text-2xl font-bold">
+                    Konfirmasi Pilihan
+                </h3>
+
+                <p class="text-slate-600 mt-3">
+                    Anda memilih:
+                </p>
+
+                <div id="confirmPaslon"
+                     class="bg-blue-50 text-blue-700 font-bold p-4 rounded-xl mt-4">
+                </div>
+
+                <p class="text-sm text-red-500 mt-4">
+                    Setelah dikirim, pilihan tidak dapat diubah.
+                </p>
+
+            </div>
+
+
+            <div class="flex gap-3 mt-7">
+
+                <button
+                    id="cancelConfirm"
+                    class="flex-1 border border-slate-300 py-3 rounded-xl font-semibold hover:bg-slate-100">
+
+                    Batal
+
+                </button>
+
+                <button
+                    id="finalSubmit"
+                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold">
+
+                    Ya, Kirim
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/voting.js"></script>
+
+</body>
+</html>
