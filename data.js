@@ -30,64 +30,9 @@ const STORAGE_KEYS = {
     CURRENT_VOTER: "osis_current_voter",
     LAST_VOTE: "osis_last_vote"
 };
+    function getStudet () {
+         const data = localStorage.getItem(STORAGE_KEYS.STUDENTS);
 
-const DEFAULT_STUDENTS = [
-    {
-        id: "S001",
-        nama: "Ahmad Rizky",
-        kelas: "X IPA 1"
-    },
-    {
-        id: "S002",
-        nama: "Budi Santoso",
-        kelas: "X IPA 1"
-    },
-    {
-        id: "S003",
-        nama: "Citra Lestari",
-        kelas: "X IPA 2"
-    },
-    {
-        id: "S004",
-        nama: "Dinda Putri",
-        kelas: "X IPA 2"
-    },
-    {
-        id: "S005",
-        nama: "Eko Pratama",
-        kelas: "XI IPA 1"
-    },
-    {
-        id: "S006",
-        nama: "Fajar Hidayat",
-        kelas: "XI IPA 1"
-    },
-    {
-        id: "S007",
-        nama: "Gita Permata",
-        kelas: "XI IPS 1"
-    },
-    {
-        id: "S008",
-        nama: "Hendra Wijaya",
-        kelas: "XI IPS 1"
-    },
-    {
-        id: "S009",
-        nama: "Intan Sari",
-        kelas: "XII IPA 1"
-    },
-    {
-        id: "S010",
-        nama: "Joko Saputra",
-        kelas: "XII IPA 1"
-    }
-];
-
-function getStudents() {
-    const data = localStorage.getItem(STORAGE_KEYS.STUDENTS);
-
-    if (!data) {
         localStorage.setItem(
             STORAGE_KEYS.STUDENTS,
             JSON.stringify(DEFAULT_STUDENTS)
